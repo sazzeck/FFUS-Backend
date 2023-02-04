@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "ffus"
+version = "0.1.0"
+description = ""
+authors = ["sazzeck <sazzeckprog@gmail.com>"]
+license = ""
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^0.21.0"
+Django = "^4.1.4"
+psycopg2 = "^2.9.5"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "^7.0.2"}
+djangorestframework = "^3.14.0"
+django-cors-headers = "^3.13.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^6.0.0"
+black = "^22.12.0"
+
+[tool.black]
+line-length = 80
+target-version = ["py39"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
