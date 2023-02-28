@@ -5,7 +5,7 @@ from phonenumber_field import modelfields
 from django.utils.translation import gettext_lazy as _
 
 
-class ContactModel(models.Model):
+class FeedbackModel(models.Model):
     firstname: models.CharField = models.CharField(
         verbose_name=_("Ім'я"),
         max_length=64,
@@ -14,7 +14,7 @@ class ContactModel(models.Model):
     )
     phone_number: modelfields.PhoneNumberField = modelfields.PhoneNumberField(
         verbose_name=_("Номер телефону"),
-        max_length=13,
+        max_length=15,
         blank=False,
         null=False,
         unique=True,
@@ -32,3 +32,6 @@ class ContactModel(models.Model):
 
     def __str__(self) -> str:
         return f"{self.firstname}".capitalize()
+
+    def get_feedback(self) -> str:
+        return f"{self.firstname}: {self.phone_number}"

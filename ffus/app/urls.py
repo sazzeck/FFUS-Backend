@@ -5,5 +5,8 @@ from ffus.utils import Config
 
 urlpatterns: list[URLResolver] = [
     path(Config.ADMIN_PANEL_URL, admin.site.urls),
-    path(Config.API_URL, include("contacts.urls")),
+    path(
+        Config.API_URL,
+        include(("contacts.urls", "contacts"), namespace="contacts"),
+    ),
 ]

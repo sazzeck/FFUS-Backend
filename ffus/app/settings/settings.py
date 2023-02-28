@@ -1,14 +1,14 @@
-# import typing as t
+import typing as t
 from pathlib import Path
 
 from ffus.utils import Config
+
 
 SECRET_KEY: str = Config.SECRET_KEY
 
 BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
 
 ALLOWED_HOSTS: list[str] = Config.HOSTS
-
 
 CREATED_APPS: list[str] = [
     "contacts",
@@ -23,6 +23,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.staticfiles",
 ] + CREATED_APPS
 
 MIDDLEWARE: list[str] = [
@@ -38,39 +39,43 @@ MIDDLEWARE: list[str] = [
 
 ROOT_URLCONF: str = "app.urls"
 
-# TEMPLATES: list[dict[str, t.Any]] = [
-#     {
-#         "BACKEND": "django.template.backends.django.DjangoTemplates",
-#         "DIRS": [Path(BASE_DIR, "templates")],
-#         "APP_DIRS": True,
-#         "OPTIONS": {
-#             "context_processors": [
-#                 "django.template.context_processors.debug",
-#                 "django.template.context_processors.request",
-#                 "django.contrib.auth.context_processors.auth",
-#                 "django.contrib.messages.context_processors.messages",
-#             ],
-#         },
-#     },
-# ]
+TEMPLATES: list[dict[str, t.Any]] = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
 
+
+STATIC_URL: str = "/static/"
+
+REST_FRAMEWORK: dict[str, t.Any] = {
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ],
+}
 
 CORS_ALLOWED_ORIGINS: list[str] = [
-    "https://example.com",
-    "https://sub.example.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_METHODS: list[str] = [
-    "DELETE",
     "GET",
     "OPTIONS",
-    "PATCH",
     "POST",
     "PUT",
 ]
-
 
 WSGI_APPLICATION: str = "app.wsgi.application"
 

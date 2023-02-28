@@ -14,6 +14,6 @@ DATABASES: dict[str, t.Union[str, int]] = {
 
 AUTH_PASSWORD_VALIDATORS: list[dict[str, str]] = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator", # noqa
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
 ]
